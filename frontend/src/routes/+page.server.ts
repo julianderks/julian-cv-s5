@@ -16,11 +16,9 @@ export const load: PageServerLoad = async () => {
 		};
 	}
 
-	const form = await superValidate(zod(toolSchema));
-
 	return {
-		tools: tools || [],
-		form
+		tools: tools,
+		form: await superValidate(zod(toolSchema))
 	};
 };
 

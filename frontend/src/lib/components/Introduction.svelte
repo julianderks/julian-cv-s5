@@ -2,6 +2,8 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import * as Card from '$lib/components/ui/card';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
 	import { PUBLIC_SUPABASE_URL } from '$env/static/public';
 
 	let cacheBuster = new Date().getTime();
@@ -14,7 +16,7 @@
 		<Card.Description class="text-base">Data Engineer | DevOps Engineer</Card.Description>
 	</Card.Header>
 	<Card.Content>
-		<div class="relative mb-8 flex justify-center">
+		<div class="mb-8 flex justify-center">
 			<Avatar.Root class="size-72 border-4 border-white">
 				<Avatar.Image src={avatarUrl} alt="@shadcn" class="grayscale" />
 				<Avatar.Fallback>JD</Avatar.Fallback>
@@ -37,36 +39,41 @@
 						<Dialog.Title>Upload New Avatar</Dialog.Title>
 					</Dialog.Header>
 					<Dialog.Description>
-						<form method="POST" enctype="multipart/form-data" action="?/uploadImage">
-							<input type="file" name="file" accept="image/*" />
-							<button type="submit" class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">
-								Upload
-							</button>
+						<form
+							method="POST"
+							enctype="multipart/form-data"
+							action="?/uploadImage"
+							class="flex flex-col space-y-4"
+						>
+							<p>
+								Please select a profile picture from your local filesystem. The image you choose
+								will be uploaded and set as your profile picture. Ensure that the image is clear and
+								represents you well.
+							</p>
+							<div class="flex w-full items-center space-x-4">
+								<Input type="file" name="file" accept="image/*" placeholder="No File Chosen" />
+								<Button type="submit">Upload</Button>
+							</div>
 						</form>
 					</Dialog.Description>
-					<Dialog.Footer>
-						<Dialog.Close>Close</Dialog.Close>
-					</Dialog.Footer>
 				</Dialog.Content>
 			</Dialog.Root>
 		</div>
-		<div class="text-start">
-			<h1 class="text-ring mb-0 text-lg underline">Introduction</h1>
-			<p class="break-all text-sm">
+		<div class="p-4 text-start">
+			<h1 class="text-ring mb-2 text-lg underline">Introduction</h1>
+			<p class="break-words text-base leading-relaxed">
 				Former Data Scientist turned Data Engineer, currently exploring the world of DevOps with a
 				focus on Kubernetes (GKE), Helm & Automated testing. My journey has equipped me with
 				expertise in building data infrastructures like Data warehouses, Data lakehouses, and Delta
 				lakes, utilizing tools such as PySpark, SQL, Databricks, and Terraform. I have experience
 				across both Azure and GCP platforms, embracing challenges and opportunities to innovate
 				within data and infrastructure management.
-				<br />
-				<br />
+				<br /><br />
 				Working as a consultant has exposed me to a variety of customers in different sectors, enriching
 				my experience with diverse business needs and technological environments. This role has allowed
 				me to not only assist organizations in harnessing their data to drive progress but also to continually
 				expand my knowledge and skills with new tools and practices.
-				<br />
-				<br />
+				<br /><br />
 				I am passionate about learning new tech‐related things and enjoy working on hobby projects in
 				my spare time. In fact, this very website is a result of a hobby project where I implemented
 				a three‐tier app with Golang as the backend and Sveltekit/TypeScript/Tailwind CSS as the frontend!
